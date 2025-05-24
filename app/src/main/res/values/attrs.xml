@@ -1,0 +1,14 @@
+<resources>
+    <declare-styleable name="ImageTextButton">
+        <attr name="imageSrc" format="reference" />
+        <attr name="buttonText" format="string" />
+        <attr name="buttonTextSize" format="dimension" />
+        <attr name="buttonTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ImageProgressView">
+        <attr name="maxItems" format="integer" />
+        <attr name="backgroundRes" format="reference" />
+        <attr name="itemImageRes" format="reference" />
+    </declare-styleable>
+</resources>

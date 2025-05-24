@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/main_background"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SettingsActivity">
+
+    <LinearLayout
+        android:id="@+id/settingsBox"
+        android:layout_marginHorizontal="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/menu_background"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/musicBoxTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Music"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/musicBox" />
+
+        <LinearLayout
+            android:id="@+id/musicBox"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/increaseMusicButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_plus"
+                android:background="@android:color/transparent"
+                />
+            <me.freelance.other.view.ImageProgressView
+                android:id="@+id/customProgressMusic"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                app:maxItems="10"
+                app:backgroundRes="@drawable/progressbar_settings_background"
+                app:itemImageRes="@drawable/progressbar_item" />
+            <ImageButton
+                android:id="@+id/decreaseMusicButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_minus"
+                android:background="@android:color/transparent"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/soundBoxTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:text="SOUNDS"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/musicBox" />
+
+        <LinearLayout
+            android:id="@+id/soundBox"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/increaseSoundButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_plus"
+                android:background="@android:color/transparent"
+                />
+            <me.freelance.other.view.ImageProgressView
+                android:id="@+id/customProgressSound"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                app:maxItems="10"
+                app:backgroundRes="@drawable/progressbar_settings_background"
+                app:itemImageRes="@drawable/progressbar_item" />
+            <ImageButton
+                android:id="@+id/decreaseSoundButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_minus"
+                android:background="@android:color/transparent"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <me.freelance.other.view.PanelButtonView
+        android:id="@+id/settingsTag"
+        app:layout_constraintBottom_toTopOf="@id/settingsBox"
+        app:layout_constraintStart_toStartOf="@id/settingsBox"
+        app:layout_constraintEnd_toEndOf="@id/settingsBox"
+        android:layout_width="260dp"
+        android:layout_marginBottom="-40dp"
+        android:layout_height="90dp"
+        android:clickable="false"
+        app:buttonTextColor="@color/white"
+        app:imageSrc="@drawable/time_panel"
+        app:buttonTextSize="40sp"
+        app:buttonText="Setting"/>
+
+    <ImageButton
+        android:id="@+id/buttonExit"
+        app:layout_constraintBottom_toBottomOf="@id/settingsBox"
+        app:layout_constraintEnd_toEndOf="@id/settingsBox"
+        android:src="@drawable/ic_exit"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="-10dp"
+        android:layout_marginEnd="-6dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

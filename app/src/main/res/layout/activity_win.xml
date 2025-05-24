@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@drawable/win_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WinActivity">
+
+    <LinearLayout
+        android:id="@+id/menu_box"
+        android:layout_width="240dp"
+        android:layout_height="300dp"
+        android:background="@drawable/menu_background"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
+
+        <me.freelance.other.view.PanelButtonView
+            android:id="@+id/buttonPlay"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            app:buttonText="Play"
+            app:buttonTextColor="@color/white"
+            app:buttonTextSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <me.freelance.other.view.PanelButtonView
+            android:id="@+id/buttonSettings"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            app:buttonText="Settings"
+            app:buttonTextColor="@color/white"
+            app:buttonTextSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <me.freelance.other.view.PanelButtonView
+            android:id="@+id/buttonRules"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            app:buttonText="Rules"
+            app:buttonTextColor="@color/white"
+            app:buttonTextSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <me.freelance.other.view.PanelButtonView
+        android:id="@+id/menu_tag"
+        app:layout_constraintBottom_toTopOf="@id/menu_box"
+        app:layout_constraintStart_toStartOf="@id/menu_box"
+        app:layout_constraintEnd_toEndOf="@id/menu_box"
+        android:layout_width="170dp"
+        android:layout_marginBottom="-30dp"
+        android:layout_height="70dp"
+        android:clickable="false"
+        app:buttonTextColor="#FFF500"
+        app:imageSrc="@drawable/time_panel"
+        app:buttonTextSize="30sp"
+        app:buttonText="You Win!"/>
+
+    <ImageButton
+        android:id="@+id/buttonExit"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintEnd_toEndOf="@id/menu_box"
+        android:src="@drawable/ic_exit"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="-10dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
