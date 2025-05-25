@@ -1,6 +1,7 @@
 package me.freelance.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import me.freelance.activities.game.GameActivity;
 import me.freelance.activities.game.GameStateHolder;
 import me.freelance.other.layout.Layoutable;
 import me.freelance.other.music.Mp3Player;
+import me.freelance.other.user.service.UserLocalService;
 import me.freelance.other.util.UiUtil;
 import me.freelance.other.view.ImageProgressView;
 
@@ -20,13 +22,14 @@ public class SettingsActivity extends AppCompatActivity implements Layoutable {
     private ImageButton exitButton;
     private Mp3Player musicPlayer;
     private Mp3Player soundPlayer;
+    UserLocalService userLocalService;
     public static Class<? extends AppCompatActivity> prevActivty;
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        if(prevActivty.equals(GameActivity.class)) {
+        if (prevActivty.equals(GameActivity.class)) {
             GameActivity.startNewGame = false;
         }
     }
@@ -62,52 +65,70 @@ public class SettingsActivity extends AppCompatActivity implements Layoutable {
         customProgressSound = findViewById(R.id.customProgressSound);
         increaseSoundButton = findViewById(R.id.increaseSoundButton);
         decreaseSoundButton = findViewById(R.id.decreaseSoundButton);
+        userLocalService = LoadingActivity.userLocalService;
 
+        int currentMusicCount = userLocalService.getCurrentCountMusicVolume(); //(int) (musicPlayer.getCurrentVolume() * 10);
+        customProgressMusic.setCurrentCount(currentMusicCount);
 
-        if(musicPlayer != null) {
-            int currentMusicCount = (int) (musicPlayer.getCurrentVolume() * 10);
-            customProgressMusic.setCurrentCount(currentMusicCount);
-        }
-
-        if(soundPlayer != null) {
-            int currentSoundCount = (int) (soundPlayer.getCurrentVolume() * 10);
-            customProgressSound.setCurrentCount(currentSoundCount);
-        }
+        int currentSoundCount = userLocalService.getCurrentCountSoundVolume(); //(int) (soundPlayer.getCurrentVolume() * 10);
+        customProgressSound.setCurrentCount(currentSoundCount);
     }
 
     public void input() {
         exitButton.setOnClickListener(v -> {
             UiUtil.loadActivityPauseCurrent(this, prevActivty);
 
-            if(prevActivty.equals(MainActivity.class))
+            if (prevActivty.equals(MainActivity.class))
                 MainActivity.prevActivty = null;
         });
 
         increaseMusicButton.setOnClickListener(v -> {
             customProgressMusic.increase();
-            musicPlayer.increaseZvuk10();
 
-            LoadingActivity.userLocalService.setMusicVolume(musicPlayer.getCurrentVolume());
+            musicPlayer.increaseZvuk10();
+            userLocalService.setMusicVolume(musicPlayer.getCurrentVolume());
+
+            var currentCount = userLocalService.getCurrentCountMusicVolume();
+            userLocalService.setCurrentCountMusicVolume(
+                    currentCount == 10
+                            ? currentCount
+                            : currentCount + 1);
         });
+
         decreaseMusicButton.setOnClickListener(v -> {
             customProgressMusic.decrease();
             musicPlayer.decreaseZvuk10();
+            userLocalService.setMusicVolume(musicPlayer.getCurrentVolume());
 
-            LoadingActivity.userLocalService.setMusicVolume(musicPlayer.getCurrentVolume());
+            var currentCount = userLocalService.getCurrentCountMusicVolume();
+            userLocalService.setCurrentCountMusicVolume(
+                    currentCount == 0
+                            ? currentCount
+                            : currentCount - 1);
         });
 
         increaseSoundButton.setOnClickListener(v -> {
             customProgressSound.increase();
             soundPlayer.increaseZvuk10();
+            userLocalService.setSoundVolume(soundPlayer.getCurrentVolume());
 
-            LoadingActivity.userLocalService.setSoundVolume(soundPlayer.getCurrentVolume());
+            var currentCount = userLocalService.getCurrentCountSoundVolume();
+            userLocalService.setCurrentCountSoundVolume(
+                    currentCount == 10
+                            ? currentCount
+                            : currentCount + 1);
         });
 
         decreaseSoundButton.setOnClickListener(v -> {
             customProgressSound.decrease();
             soundPlayer.decreaseZvuk10();
+            userLocalService.setSoundVolume(soundPlayer.getCurrentVolume());
 
-            LoadingActivity.userLocalService.setSoundVolume(soundPlayer.getCurrentVolume());
+            var currentCount = userLocalService.getCurrentCountSoundVolume();
+            userLocalService.setCurrentCountSoundVolume(
+                    currentCount == 0
+                            ? currentCount
+                            : currentCount - 1);
         });
     }
 

@@ -5,7 +5,7 @@ import android.media.MediaPlayer;
 
 public class Mp3Player {
     private MediaPlayer mediaPlayer;
-    private Context context;
+    public Context context;
     private int currentResId = -1;
 
     // Текущий уровень громкости (от 0.0 до 1.0)

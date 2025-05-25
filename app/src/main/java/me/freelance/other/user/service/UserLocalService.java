@@ -28,7 +28,9 @@ public class UserLocalService {
         if (!isFileExist()) {
             userLocal = new UserLocal(
                     1.0f,
-                    1.0f
+                    1.0f,
+                    10,
+                    10
             );
             userExist = false;
             saveUser();
@@ -45,6 +47,8 @@ public class UserLocalService {
 
             dos.writeFloat(userLocal.getMusicVolume());
             dos.writeFloat(userLocal.getSoundVolume());
+            dos.writeInt(userLocal.getCurrentCountSoundVolume());
+            dos.writeInt(userLocal.getCurrentCountMusicVolume());
 
             dos.flush();
             dos.close();
@@ -59,15 +63,19 @@ public class UserLocalService {
 
             var musicVolume = dis.readFloat();
             var soundVolume = dis.readFloat();
+            var currentCountSoundVolume = dis.readInt();
+            var currentCountMusicVolume = dis.readInt();
 
-            userLocal = new UserLocal(soundVolume, musicVolume);
+            userLocal = new UserLocal(soundVolume, musicVolume, currentCountSoundVolume, currentCountMusicVolume);
 
             dis.close();
         } catch (IOException | IndexOutOfBoundsException e) {
             Log.e("UserService", "Error loading user: " + Arrays.toString(e.getStackTrace()));
             userLocal = new UserLocal(
                     1.0f,
-                    1.0f
+                    1.0f,
+                    10,
+                    10
             );
         }
     }
@@ -99,6 +107,36 @@ public class UserLocalService {
             loadUser();
 
         userLocal.setSoundVolume(soundVolume);
+        saveUser();
+    }
+
+    public int getCurrentCountMusicVolume() {
+        if(userLocal == null)
+            loadUser();
+
+        return userLocal.getCurrentCountMusicVolume();
+    }
+
+    public int getCurrentCountSoundVolume() {
+        if(userLocal == null)
+            loadUser();
+
+        return userLocal.getCurrentCountSoundVolume();
+    }
+
+    public void setCurrentCountMusicVolume(int musicVolume) {
+        if(userLocal == null)
+            loadUser();
+
+        userLocal.setCurrentCountMusicVolume(musicVolume);
+        saveUser();
+    }
+
+    public void setCurrentCountSoundVolume(int soundVolume) {
+        if(userLocal == null)
+            loadUser();
+
+        userLocal.setCurrentCountSoundVolume(soundVolume);
         saveUser();
     }
 

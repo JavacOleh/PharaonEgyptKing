@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import me.freelance.R;
 import me.freelance.activities.FailActivity;
+import me.freelance.activities.LoadingActivity;
 import me.freelance.activities.MainActivity;
 import me.freelance.activities.SettingsActivity;
 import me.freelance.activities.game.animation.ButtonsAnimator;
@@ -32,9 +33,9 @@ public class GameActivity extends AppCompatActivity implements Layoutable {
     ImageButton settingsButton, pauseButton;
     ButtonsAnimator animator;
     Handler timerHandler = new Handler(Looper.getMainLooper());
-    int size = 150; //getResources().getDisplayMetrics().widthPixels / COLS - 115
-    int horizontalMargin = 8; // px, или dp переведённый в px
-    int verticalMargin = 12;
+    int size = 110; //getResources().getDisplayMetrics().widthPixels / COLS - 115
+    int horizontalMargin = 0; // px, или dp переведённый в px
+    int verticalMargin = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class GameActivity extends AppCompatActivity implements Layoutable {
         input();
 
         gameEngine = new GameEngine(this);
-
+        size = Layoutable.super.getCellSizeDp(this);
         // Инициализация UI сетки
         setupGrid();
         updateGrid();
@@ -54,7 +55,6 @@ public class GameActivity extends AppCompatActivity implements Layoutable {
     @Override
     protected void onStart() {
         super.onStart();
-
 //        String text = gameTimer.getTextView().getText().toString().trim();
 //        int currentTime = Integer.parseInt(text);
 //

@@ -12,4 +12,6 @@ import lombok.Setter;
 public class UserLocal {
     private float soundVolume;
     private float musicVolume;
+    private int currentCountSoundVolume;
+    private int currentCountMusicVolume;
 }

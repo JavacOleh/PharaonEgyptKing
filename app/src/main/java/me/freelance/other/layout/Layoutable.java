@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment;
 
 
 import me.freelance.other.layout.service.LayoutService;
+import me.freelance.other.layout.size.LayoutSize;
+import me.freelance.other.layout.size.enums.LayoutHeight;
+import me.freelance.other.layout.size.enums.LayoutWidth;
 import me.freelance.other.util.UiUtil;
 
 public interface Layoutable {
@@ -22,5 +25,20 @@ public interface Layoutable {
         int layoutId = layoutService.getLayoutForCurrent(activity, activity.getClass());
         UiUtil.loadFragment(activity, fragment, layoutId);
         //activity.setContentView(layoutId);
+    }
+
+    default int getCellSizeDp(AppCompatActivity activity) {
+        var layoutSize = LayoutSize.detect(activity);
+        var h = layoutSize.height;
+        var w = layoutSize.width;
+
+        // Пример логики
+        if (w == LayoutWidth.Middle && h == LayoutHeight.Big) return UiUtil.dpToPx(activity, 48); //пересмотреть в будущем
+        if (w == LayoutWidth.High && h == LayoutHeight.High) return UiUtil.dpToPx(activity, 48); //пересмотреть в будущем
+        if (w == LayoutWidth.High && h == LayoutHeight.Middle) return UiUtil.dpToPx(activity, 48); //пересмотреть в будущем
+        if (w == LayoutWidth.Small || h == LayoutHeight.Small) return UiUtil.dpToPx(activity, 45);
+
+        // Фоллбэк
+        return UiUtil.dpToPx(activity, 48);
     }
 }
