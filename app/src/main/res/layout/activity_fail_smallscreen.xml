@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:id="@+id/menu_box"
-        android:layout_width="370dp"
-        android:layout_height="450dp"
+        android:layout_width="240dp"
+        android:layout_height="300dp"
         android:background="@drawable/menu_background"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -26,8 +26,8 @@
 
         <me.freelance.other.view.PanelButtonView
             android:id="@+id/buttonPlay"
-            android:layout_width="240dp"
-            android:layout_height="80dp"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
             app:buttonText="Play"
             app:buttonTextColor="@color/white"
             app:buttonTextSize="30sp"
@@ -38,8 +38,8 @@
 
         <me.freelance.other.view.PanelButtonView
             android:id="@+id/buttonSettings"
-            android:layout_width="240dp"
-            android:layout_height="80dp"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             app:buttonText="Settings"
             app:buttonTextColor="@color/white"
@@ -51,8 +51,8 @@
 
         <me.freelance.other.view.PanelButtonView
             android:id="@+id/buttonRules"
-            android:layout_width="240dp"
-            android:layout_height="80dp"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
             app:buttonText="Rules"
             app:buttonTextColor="@color/white"
             app:buttonTextSize="30sp"
@@ -67,7 +67,7 @@
         app:layout_constraintBottom_toTopOf="@id/menu_box"
         app:layout_constraintStart_toStartOf="@id/menu_box"
         app:layout_constraintEnd_toEndOf="@id/menu_box"
-        android:layout_width="240dp"
+        android:layout_width="170dp"
         android:layout_marginBottom="-30dp"
         android:layout_height="70dp"
         android:clickable="false"
@@ -85,8 +85,8 @@
         android:scaleType="fitXY"
         android:layout_marginBottom="-10dp"
         android:layout_marginEnd="-10dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
 
 
 

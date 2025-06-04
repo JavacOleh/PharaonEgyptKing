@@ -55,10 +55,13 @@ public enum LayoutDefinition {
     Settings_SmallScreen(SettingsActivity.class, R.layout.activity_settings_smallscreen, "smallScreen", LayoutHeight.Small, LayoutWidth.Small),
     Rules(RulesActivity.class, R.layout.activity_rules, "basic", LayoutHeight.High, LayoutWidth.Middle),
     Win(WinActivity.class, R.layout.activity_win, "basic", LayoutHeight.High, LayoutWidth.Middle),
+    Win_SmallScreen(WinActivity.class, R.layout.activity_win_smallscreen, "basic", LayoutHeight.Small, LayoutWidth.Small),
     Fail(FailActivity.class, R.layout.activity_fail, "basic", LayoutHeight.High, LayoutWidth.Middle),
+    Fail_SmallScreen(FailActivity.class, R.layout.activity_fail_smallscreen, "basic", LayoutHeight.Small, LayoutWidth.Small),
     Game(GameActivity.class, R.layout.activity_game, "basic", LayoutHeight.High, LayoutWidth.Middle),
     Game_SmallScreen(GameActivity.class, R.layout.activity_game_smallscreen, "basic", LayoutHeight.Small, LayoutWidth.Small),
-    Main(MainActivity.class, R.layout.activity_main, "basic", LayoutHeight.High, LayoutWidth.Middle);
+    Main(MainActivity.class, R.layout.activity_main, "basic", LayoutHeight.High, LayoutWidth.Middle),
+    Main_SmallScreen(MainActivity.class, R.layout.activity_main_smallscreen, "basic", LayoutHeight.Small, LayoutWidth.Small);
     public final Class<?> activityClass;
     public final Layout layout;
     public final String deviceName;

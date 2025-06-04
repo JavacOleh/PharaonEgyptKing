@@ -1,5 +1,7 @@
 package me.freelance.other.layout;
 
+import android.content.pm.ActivityInfo;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -14,9 +16,8 @@ public interface Layoutable {
     LayoutService layoutService = LayoutService.getInstance();
     default void applyLayout(AppCompatActivity activity) {
         //Log.i("Enum:", LayoutSize.detectWidthAndHeight(activity).toString());
-        //activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         int layoutId = layoutService.getLayoutForCurrent(activity, activity.getClass()); // ← это ключ!
-
         activity.setContentView(layoutId);
     }
 
@@ -33,12 +34,12 @@ public interface Layoutable {
         var w = layoutSize.width;
 
         // Пример логики
-        if (w == LayoutWidth.Middle && h == LayoutHeight.Big) return UiUtil.dpToPx(activity, 48); //пересмотреть в будущем
-        if (w == LayoutWidth.High && h == LayoutHeight.High) return UiUtil.dpToPx(activity, 48); //пересмотреть в будущем
-        if (w == LayoutWidth.High && h == LayoutHeight.Middle) return UiUtil.dpToPx(activity, 48); //пересмотреть в будущем
+        if (w == LayoutWidth.Middle && h == LayoutHeight.Big) return UiUtil.dpToPx(activity, 70); //пересмотреть в будущем
+        if (w == LayoutWidth.High && h == LayoutHeight.High) return UiUtil.dpToPx(activity, 70); //пересмотреть в будущем
+        if (w == LayoutWidth.Middle && h == LayoutHeight.High) return UiUtil.dpToPx(activity, 70); //пересмотреть в будущем
         if (w == LayoutWidth.Small || h == LayoutHeight.Small) return UiUtil.dpToPx(activity, 45);
 
         // Фоллбэк
-        return UiUtil.dpToPx(activity, 48);
+        return UiUtil.dpToPx(activity, 70);
     }
 }
