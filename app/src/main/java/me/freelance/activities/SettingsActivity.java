@@ -65,13 +65,16 @@ public class SettingsActivity extends AppCompatActivity implements Layoutable {
         customProgressSound = findViewById(R.id.customProgressSound);
         increaseSoundButton = findViewById(R.id.increaseSoundButton);
         decreaseSoundButton = findViewById(R.id.decreaseSoundButton);
-        userLocalService = LoadingActivity.userLocalService;
+        //userLocalService = LoadingActivity.userLocalService;
 
-        int currentMusicCount = userLocalService.getCurrentCountMusicVolume(); //(int) (musicPlayer.getCurrentVolume() * 10);
-        customProgressMusic.setCurrentCount(currentMusicCount);
+        userLocalService = UserLocalService.getInstance(this);
+        if(userLocalService != null) {
+            int currentMusicCount = userLocalService.getCurrentCountMusicVolume(); //(int) (musicPlayer.getCurrentVolume() * 10);
+            customProgressMusic.setCurrentCount(currentMusicCount);
 
-        int currentSoundCount = userLocalService.getCurrentCountSoundVolume(); //(int) (soundPlayer.getCurrentVolume() * 10);
-        customProgressSound.setCurrentCount(currentSoundCount);
+            int currentSoundCount = userLocalService.getCurrentCountSoundVolume(); //(int) (soundPlayer.getCurrentVolume() * 10);
+            customProgressSound.setCurrentCount(currentSoundCount);
+        }
     }
 
     public void input() {
